@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title data-i18n="title">Óleo Sobre Vida</title>
+    <style>
+        /* Estilos generales actualizados */
+        body {
+            background-image: url(assets/images/nebulosa1.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: "Bell MT", serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            font-size: 1.15rem;
+            line-height: 1.7
+        }
+
+        /* Contenedor principal */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Jerarquías tipográficas aumentadas */
+        h1 {
+            font-family: "Bell MT", serif;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 4rem;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.8),
+                0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            text-shadow: 
+                1px 1px 3px rgba(0, 0, 0, 0.7),
+                0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h4 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Navegación */
+        nav {
+            background: transparent;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-size: 1.2rem;
+            text-shadow: 
+                1px 1px 3px rgba(0, 0, 0, 0.7),
+                0 0 5px rgba(0, 0, 0, 0.4);
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(0, 0, 0, 0.2) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Secciones */
+        section {
+            background: rgba(0, 0, 0,0.35);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(1px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.2rem;
+        }
+
+        /* Pestañas */
+        .nav-tabs {
+            border-bottom: none;
+            margin-bottom: 2rem;
+        }
+
+        .nav-tabs .nav-link {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.75rem 1.75rem;
+            margin: 0 0.75rem;
+        }
+
+        .nav-tabs .nav-link.active {
+            background: rgba(0, 0, 0, 0.2) !important;
+            border-radius: 8px;
+            font-weight: bold;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Contenido de poemas */
+        .poema-contenido {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 1.5rem auto;
+            border-left: 4px solid rgba(255, 255, 255, 0.2);
+            font-size: 1.25rem;
+            line-height: 1.9;
+        }
+
+        .list-group-item {
+            background-color: rgba(0, 0, 0, 0.20);
+            border: none;
+            margin-bottom: 0.75rem;
+            border-radius: 8px !important;
+            color: white;
+            transition: all 0.3s ease;
+            padding: 1rem 1.75rem;
+            font-size: 1.10rem;
+        }
+
+        .list-group-item:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Publicaciones */
+        .list-group-item.position-relative {
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 1.1rem;
+        }
+
+        .bg-dark.bg-opacity-50 {
+            background-color: rgba(0, 0, 0, 0.4) !important;
+            border-radius: 8px;
+            padding: 1.25rem !important;
+        }
+
+        /* Videos */
+        .ratio.ratio-16x9 {
+            margin-top: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Ebooks */
+        .ebook-card {
+            background-size: cover;
+            background-position: center;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+        }
+        
+        .ebook-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Contacto */
+        .contact-list {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 1.2rem;
+        }
+        
+        .contact-list li {
+            margin-bottom: 1.25rem;
+        }
+        
+        .contact-list a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-list a:hover {
+            text-decoration: underline;
+            color: #f8f9fa;
+        }
+
+        /* Botones */
+        .btn-outline-light {
+            border-color: rgba(255, 255, 255, 0.3);
+            font-size: 1.1rem;
+            padding: 0.5rem 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            h2 {
+                font-size: 2.4rem;
+            }
+            
+            section {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-link {
+                margin: 0 0.5rem;
+                font-size: 1.05rem;
+            }
+            
+            section {
+                padding: 1.75rem;
+                margin: 1.5rem 0;
+                font-size: 1.1rem;
+            }
+            
+            .poema-contenido {
+                font-size: 1.15rem;
+                padding: 1.5rem;
+            }
+            
+            .ebook-title {
+                font-size: 1.5rem;
+            }
+            
+            .contact-list {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-tabs .nav-link {
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+            }
+            
+            .list-group-item {
+                padding: 0.8rem 1.25rem;
+                font-size: 1.05rem;
+            } 
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center mt-5 position-relative">
+        <div style="background: rgba(0, 0, 0, 0.3); padding: 25px; border-radius: 12px; backdrop-filter: blur(1px); position: relative;">
+            <!-- Botón de cambio de idioma - Posicionado arriba a la derecha -->
+            <div style="position: absolute; top: 15px; right: 15px;">
+                <button id="languageToggle" class="btn btn-sm btn-outline-light py-1 px-2" style="font-size: 0.8rem;">
+                    ESP/ENG
+                </button>
+            </div>
+            
+            <h1 data-i18n="title">Óleo Sobre Vida</h1>
+            <p class="fst-italic mb-4" style="font-size: 1.3rem; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4), 0 0 5px rgba(0, 0, 0, 0.2);" data-i18n="quote">
+                Escribo con tinta de mis venas abiertas para que el mundo recuerde que sangrar también es testimonio – Lluvia.F. M.S.
+            </p>
+            <nav class="mt-4">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item"><a class="nav-link" href="#poemas" data-i18n="nav.poems">Poemas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#publicaciones" data-i18n="nav.publications">Publicaciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#mis-ebooks" data-i18n="nav.ebooks">Mis Ebooks</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cafe" data-i18n="nav.coffee">Café</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+        <hr style="border-color: rgba(255,255,255,0.15); margin: 2rem auto;">
+    </div>
+    
+    <div class="main-content">
+        <!-- SECCIÓN POEMAS -->
+        <section id="poemas" class="my-5">
+            <h2 data-i18n="section.poems.title">Poemas</h2>
+            <ul class="nav nav-tabs d-flex" id="poemaTabs">
+                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#categoria1" data-i18n="section.poems.category1">Reflexión Existencial</a></li>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#categoria2" data-i18n="section.poems.category2">Relaciones humanas y autoconocimiento</a></li>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#categoria3" data-i18n="section.poems.category3">Crítica Social y Resistencia</a></li>
+            </ul>
+            <div class="tab-content mt-4">
+                <!-- Categoría 1 -->
+                <div id="categoria1" class="tab-pane fade show active">
+                    <div class="d-flex justify-content-center">
+                        <div class="list-group text-center" style="width: 80%; max-width: 700px;">
+                            <!-- Poema Fantasma -->
+                            <a class="list-group-item list-group-item-action" onclick="togglePoem('fantasma')">
+                                <em data-i18n="section.poems.fantasma.title">Fantasma</em>
+                            </a>
+                            <div id="fantasma" class="poema-contenido p-3 mx-auto" style="display: none; width: 95%;">
+                                <div class="text-left" style="margin: 0 auto; max-width: 600px;">
+                                    <p data-i18n="section.poems.fantasma.line1">La esencia de mi alma se halla perdida.</p>
+                                    <p data-i18n="section.poems.fantasma.line2">No sé si estoy aquí porque también estoy en todo lugar.</p>
+                                    <p data-i18n="section.poems.fantasma.line3">No es bonito, no es una cualidad, es una cuestión humana.</p>
+                                    <p data-i18n="section.poems.fantasma.line4">Otros todos y su andanza por el mar de las emociones, la intuición.</p>
+                                    <p data-i18n="section.poems.fantasma.line5">Naturaleza extraña, me es ajeno, no comprendo.</p>
+                                    <p data-i18n="section.poems.fantasma.line6">Un frágil y desnudo cuerpo me acompaña en las tempestades</p>
+                                    <p data-i18n="section.poems.fantasma.line7">Familia, raza, amigos, marginados, la elite, la casta;</p>
+                                    <p data-i18n="section.poems.fantasma.line8">la unión de otras mentes para crear un sentido.</p>
+                                    <p data-i18n="section.poems.fantasma.line9">Territorios ideológicos desconocidos que sustentan el porvenir humano,</p>
+                                    <p data-i18n="section.poems.fantasma.line10">Conceptos prefabricados, solo nacer y morir son coordenadas visibles.</p>
+                                    <p data-i18n="section.poems.fantasma.line11">Mi mente me ayuda, mi mente me destruye</p>
+                                    <p data-i18n="section.poems.fantasma.line12">¿Qué puedo esperar de mí?</p>
+                                    <p data-i18n="section.poems.fantasma.line13">No sé qué decir</p>
+                                    <p data-i18n="section.poems.fantasma.line14">¿Y entonces?</p>
+                                    <p data-i18n="section.poems.fantasma.line15">Quiero estar tranquila, es ahí, en ese deseo,</p>
+                                    <p data-i18n="section.poems.fantasma.line16">donde aparecen como fantasmas la fe y la amargura.</p>
+                                    <p data-i18n="section.poems.fantasma.line17">¿Qué va a ser de mí?</p>
+                                    <p data-i18n="section.poems.fantasma.line18">En cualquier momento la muerte tocará mi puerta,</p>
+                                    <p data-i18n="section.poems.fantasma.line19">mi alma grita,</p>
+                                    <p data-i18n="section.poems.fantasma.line20">los cuervos me obligan a estar confinada,</p>
+                                    <p data-i18n="section.poems.fantasma.line21">los quiero encerrar a ellos para nunca acabar.</p>
+                                    <p data-i18n="section.poems.fantasma.line22">Trato de contemplarme, ¿Por qué me escondo?</p>
+                                    <p data-i18n="section.poems.fantasma.line23">¡Ya basta!</p>
+                                    <p data-i18n="section.poems.fantasma.line24">El salvajismo emocional me carcome.</p>
+                                    <p data-i18n="section.poems.fantasma.line25">Entender la otredad para estar en armonía.</p>
+                                    <p data-i18n="section.poems.fantasma.line26">Jamás lo sabré todo, tiendo al caos.</p>
+                                    <p data-i18n="section.poems.fantasma.line27">Cual tangente está el dolor,</p>
+                                    <p data-i18n="section.poems.fantasma.line28">qué tan a flor de piel está la desesperanza y la ilusión.</p>
+                                </div>
+                            </div>
+            
+                            <!-- Poema A mis hijos -->
+                            <a class="list-group-item list-group-item-action" onclick="togglePoem('a-mis-hijos')">
+                                <em data-i18n="section.poems.amishijos.title">A mis hijos</em>
+                            </a>
+                            <div id="a-mis-hijos" class="poema-contenido p-3 mx-auto" style="display: none; width: 95%;">
+                                <div class="text-left" style="margin: 0 auto; max-width: 600px;">
+                                    <p data-i18n="section.poems.amishijos.line1">No toda sonrisa es sincera.</p>
+                                    <p data-i18n="section.poems.amishijos.line2">No os preocupéis, lo siniestro también se puede ver,</p>
+                                    <p data-i18n="section.poems.amishijos.line3">las miradas se pueden leer,</p>
+                                    <p data-i18n="section.poems.amishijos.line4">cada poro del cuerpo delata su tormenta.</p>
+                                    
+                                    <p data-i18n="section.poems.amishijos.line5">Un manjar se puede servir con oscuras intenciones,</p>
+                                    <p data-i18n="section.poems.amishijos.line6">mientras una sopa sencilla puede significar un bocado de bondad.</p>
+                                    
+                                    <p data-i18n="section.poems.amishijos.line7">No todos respiran tu aire,</p>
+                                    <p data-i18n="section.poems.amishijos.line8">abraza tus rarezas,</p>
+                                    <p data-i18n="section.poems.amishijos.line9">son el lastre que te traen a flote en este mundo.</p>
+                                    
+                                    <p data-i18n="section.poems.amishijos.line10">Olvida el diccionario de ángeles y demonios,</p>
+                                    <p data-i18n="section.poems.amishijos.line11">solo el alma se puede sentir,</p>
+                                    <p data-i18n="section.poems.amishijos.line12">cuándo la intuición</p>
+                                    <p data-i18n="section.poems.amishijos.line13">grita más fuerte que la razón.</p>
+                                    
+                                    <p data-i18n="section.poems.amishijos.line14">Cada cosa tiene su punto de equilibrio,</p>
+                                    <p data-i18n="section.poems.amishijos.line15">tu centro</p>
+                                    <p data-i18n="section.poems.amishijos.line16">late donde el reloj</p>
+                                    <p data-i18n="section.poems.amishijos.line17">se olvida de girar.</p>
+                                    
+                                    <p data-i18n="section.poems.amishijos.line18">Aprende a sentarte</p>
+                                    <p data-i18n="section.poems.amishijos.line19">en el filo del aburrimiento:</p>
+                                    <p data-i18n="section.poems.amishijos.line20">un lado corta venas,</p>
+                                    <p data-i18n="section.poems.amishijos.line21">el otro desata universos.</p>
+                                    
+                                    <p data-i18n="section.poems.amishijos.line22">Tu sangre elegirá</p>
+                                    
+                                    <p data-i18n="section.poems.amishijos.line23">Todos son mis hijos, la creación reside en mí.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Categoría 2 -->
+                <div id="categoria2" class="tab-pane fade">
+                    <div class="d-flex justify-content-center">
+                        <div class="list-group text-center" style="width: 80%; max-width: 700px;">
+                            <!-- Poema Amiga -->
+                            <a class="list-group-item list-group-item-action" onclick="togglePoem('amiga')">
+                                <em data-i18n="section.poems.amiga.title">Amiga</em>
+                            </a>
+                            <div id="amiga" class="poema-contenido p-3 mx-auto" style="display: none; width: 95%;">
+                                <div class="text-left" style="margin: 0 auto; max-width: 600px;">
+                                    <p data-i18n="section.poems.amiga.line1">Mi corazón se estruja cuando coincidimos en risas que se balancean en la ligereza de una pluma</p>
+                                    <p data-i18n="section.poems.amiga.line2">cayendo.</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line3">Como hermanas de otra madre, el viento trajo tu nombre</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line4">Amor indecible, tiembla mi ser.</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line5">Pensar que me adoras como yo a ti, me entusiasma.</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line6">Pensar que me alabas como yo a ti, me derrite.</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line7">Pensar que me quieres como yo a ti, me cautiva</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line8">Nace por el género y termina con la palabra "amiga".</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line9">Perfecta danza de espejos</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line10">Hasta que el telón se arruinó en mentiras y traición</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line11">Se torció el guión</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line12">Me apagaste cuando brillaba, me callaste cuando reía.</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line13">Señalando mis cicatrices, festejando mis heridas.</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line14">La función se volvió tragedia bajo el yugo de la envidia.</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line15">A pesar de todo</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line16">Te acepto en tus puntos y comas,</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line17">en tus paréntesis de llanto,</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line18">en tus signos de interrogación...</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line19">pero no en este párrafo</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line20">donde yo respiro, donde me nombro libre.</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line21">Suaves palabras</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line22">Mi única, implacable y fiel amiga.</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line23">La mejor y peor de todas.</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line24">Yo misma</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line25">la que sangra cristales</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line26">y con los fragmentos se construye un mapa</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line27">donde tu nombre es sólo una cicatriz que ya no pica</p>
+                                
+                                    <p data-i18n="section.poems.amiga.line28">adiós.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Categoría 3 -->
+                <div id="categoria3" class="tab-pane fade">
+                    <div class="d-flex justify-content-center">
+                        <div class="list-group text-center" style="width: 80%; max-width: 700px;">
+                           <!-- Poema awaka-->
+                         
+<!-- Poema Awaka -->
+<a class="list-group-item list-group-item-action" onclick="togglePoem('awaka')">
+    <em data-i18n="section.poems.awaka.title">Awaka</em>
+</a>
+<div id="awaka" class="poema-contenido p-3 mx-auto" style="display: none; width: 95%;">
+    <div class="text-left" style="margin: 0 auto; max-width: 600px;">
+        <p data-i18n="section.poems.awaka.line1">Algo se descubrió/ fue el folklor de mi calle</p>  
+        <p data-i18n="section.poems.awaka.line2">la cultura de mi gente / el aroma de la comida</p>  
+        <p data-i18n="section.poems.awaka.line3">la angusticidad de los días</p>  
+        <p data-i18n="section.poems.awaka.line4">la manera en la que me visto</p>  
+        <p data-i18n="section.poems.awaka.line5">la manera en la que me sustento</p>  
+        <p data-i18n="section.poems.awaka.line6">mis paisajes culturales/ llegó la mirada del inversor</p>  
+        <p data-i18n="section.poems.awaka.line7">mis abuelos decidieron mudarse</p>  
+        <p data-i18n="section.poems.awaka.line8">la mejor decisión es vender la casa</p>  
+        <p data-i18n="section.poems.awaka.line9">descubrí que nos están desplazando</p>  
+
+        <p data-i18n="section.poems.awaka.line10">algo se rompió</p>  
+        <p data-i18n="section.poems.awaka.line11">necesito hablar con alguien// salgo no veo a nadie</p>  
+        <p data-i18n="section.poems.awaka.line12">¿Quién eres tú? // Ni siquiera hablas mi idioma</p>  
+        <p data-i18n="section.poems.awaka.line13">no entiendes de lo que hablo// y no me refiero a palabras</p>  
+        <p data-i18n="section.poems.awaka.line14">me refiero a lo que sentimos</p>  
+        <p data-i18n="section.poems.awaka.line15">se rompió mi confianza</p>  
+        <p data-i18n="section.poems.awaka.line16">ahora no encajo// no me alcanza</p>  
+        <p data-i18n="section.poems.awaka.line17">solo mira esos ojos// llenos de awaka</p>  
+        <p data-i18n="section.poems.awaka.line18">la ambición desbordada que vieron los indígenas en los colonizadores</p>  
+        <p data-i18n="section.poems.awaka.line19">la misma hambre que trajeron los barcos</p>  
+        <p data-i18n="section.poems.awaka.line20">la misma sombra que devora el tiempo</p>  
+
+        <p data-i18n="section.poems.awaka.line21">no entiendo</p>  
+        <p data-i18n="section.poems.awaka.line22">¿dónde están los pájaros? //¿dónde están los árboles?</p>  
+        <p data-i18n="section.poems.awaka.line23">¿dónde están las luciérnagas?// ¿dónde está mi paisaje?</p>  
+        <p data-i18n="section.poems.awaka.line24">se está perdiendo la esencia</p>  
+        <p data-i18n="section.poems.awaka.line25">se está perdiendo el folklor // están borrando la memoria</p>  
+        <p data-i18n="section.poems.awaka.line26">se perdieron mis amigos//se perdió el barrio</p>  
+        <p data-i18n="section.poems.awaka.line27">solo me queda perderme a mí</p>  
+        <p data-i18n="section.poems.awaka.line28">necesito moverme// necesito luchar</p>
+    </div>
+</div>
+
+                            <!-- Poema Que me Dejo -->
+                            <a class="list-group-item list-group-item-action" onclick="togglePoem('que-me-dejo')">
+                                <em data-i18n="section.poems.quemedajo.title">Que me Dejo</em>
+                            </a>
+                            <div id="que-me-dejo" class="poema-contenido p-3 mx-auto" style="display: none; width: 95%;">
+                                <div class="text-left" style="margin: 0 auto; max-width: 600px;">
+                                    <p data-i18n="section.poems.quemedajo.line1">No hables, abre las piernas, así está mejor</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line2">Intentar vivir en silencio</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line3">Nada de quejas</p>
+                                    
+                                    <p data-i18n="section.poems.quemedajo.line4">Siéntate y escucha mis desprecios</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line5">No tienes futuro como nada, como nadie</p>
+                                    <p data-i18n="section.poems.quemedajo.line6">Y que me dejó, me la creí sabiendo que sus palabras son falsas, tanto lo repitieron.</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line7">Me dejé cuando me acusaron injustamente</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line8">Cuando te burlaste en mi cara</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line9">Cuando me golpeaste sin compasión</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line10">El gozar de la credibilidad social</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line11">De la blanquitud de tu cara</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line12">y el apellido europeo de un padre que no te quiso.</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line13">Me dejé y me enoja seguir haciéndolo</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line14">Seré rebelde, en realidad siempre lo he sido.</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line15">27 años y entiendo a los del club.</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line16">A Camille Claudel y a Mileva Maric</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line17">A mi madre y a mis abuelas</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line18">que también se dejaron, las obligaron a hacerlo.</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line19">Soy sublime y no pienso callar más.</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line20">Ni tus más grandes esfuerzos podrán conmigo jamás</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line21">Me defenderé y viviré</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line22">A su pesar, de hombres y mujeres,</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line23">que no pueden con el brillo del bronce que funde sus cadenas</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line24">y escribe con el fuego</p>
+
+                                    <p data-i18n="section.poems.quemedajo.line25">los nombres de las que vendrán.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN PUBLICACIONES -->
+        <section id="publicaciones">
+            <h2 data-i18n="section.publications.title">Publicaciones</h2>
+            
+            <ul class="nav nav-tabs" id="publicacionesTabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#poemarios" data-i18n="section.publications.tab1">Poemarios Colectivos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#videos" data-i18n="section.publications.tab2">Videos</a>
+                </li>
+            </ul>
+            
+            <div class="tab-content mt-3">
+                <!-- Pestaña de Poemarios Colectivos -->
+                <div id="poemarios" class="tab-pane fade show active">
+                    <div class="d-flex justify-content-center">
+                        <div class="list-group text-center" style="width: 80%; max-width: 700px;">
+                            <!-- Poesía Joven -->
+                            <a href="app/statics/LIBROPCSUR2024.pdf" target="_blank" rel="noopener noreferrer"
+                            class="list-group-item list-group-item-action position-relative"
+                            style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                                            url('Poesia Joven.jpg');
+                                   background-size: cover;
+                                   background-position: center;
+                                   height: 200px;
+                                   display: flex;
+                                   flex-direction: column;
+                                   justify-content: center;
+                                   color: white;
+                                   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+                                   border: none;
+                                   border-radius: 8px;
+                                   margin-bottom: 15px;">
+                                <div class="p-3" style="background-color: transparent;">
+                                    <p class="mb-0 fw-bold"><em data-i18n="section.publications.poetry2024.title">Poesía Joven 2024</em></p>
+                                    <small data-i18n="section.publications.poetry2024.description">El poemario colectivo <em>Poesía Joven 2024</em>, es una antología internacional del <em>Movimiento Proyecto Cultural Sur</em>, donde participe con el poema <em>Palestina</em>, un grito contra la guerra y la injusticia. 
+                                        La obra —con imágenes de destrucción y resistencia— culmina con una advertencia: <em>"Hoy es Palestina, mañana los pueblos del mundo"</em>.
+                                        Esta colección es un testimonio potente de la juventud latinoamericana e hispanohablante, donde <em>arte</em> y <em>activismo</em> se unen. 
+                                        Ideal para quienes buscan poesía contemporánea con <em>conciencia social</em>.
+                                    </small>
+                                </div>
+                            </a>
+                            
+                            <!-- Poema Algorítmico -->
+                            <a href="app/statics/PoemaAlgoritmico.pdf" target="_blank" rel="noopener noreferrer"
+                            class="list-group-item list-group-item-action position-relative"
+                            style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                                            url('Poema Algoritmico.jpg');
+                                   background-size: cover;
+                                   background-position: center;
+                                   height: 200px;
+                                   display: flex;
+                                   flex-direction: column;
+                                   justify-content: center;
+                                   color: white;
+                                   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+                                   border: none;
+                                   border-radius: 8px;
+                                   margin-bottom: 15px;">
+                                <div class="p-3" style="background-color: transparent;">
+                                    <p class="mb-0 fw-bold"><em data-i18n="section.publications.algorithmic.title">Poema Algorítmico</em></p>
+                                    <small data-i18n="section.publications.algorithmic.description">El <em>Poema Algorítmico</em> (2021, <em>Poesía Volante</em>, México) es una obra experimental que fusiona literatura y tecnología mediante <em>cadenas de Márkov</em>, un método de generación de texto basado en probabilidades. El resultado es un texto <em>surrealista</em> y <em>fragmentado</em>. Mi huella poética en el <em>Poema Algorítmico</em> se revela donde <em>geografías reales e imaginarias</em> se convierten en extensiones del cuerpo y la memoria.</small>
+                                </div>
+                            </a>
+                            
+                            <!-- Luna de Papel -->
+                            <a href="app/statics/Lunadepapel.pdf" target="_blank" rel="noopener noreferrer"
+                            class="list-group-item list-group-item-action position-relative"
+                            style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                                            url('Luna de papel.jpg');
+                                   background-size: cover;
+                                   background-position: center;
+                                   height: 200px;
+                                   display: flex;
+                                   flex-direction: column;
+                                   justify-content: center;
+                                   color: white;
+                                   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+                                   border: none;
+                                   border-radius: 8px;
+                                   margin-bottom: 15px;">
+                                <div class="p-3" style="background-color: transparent;">
+                                    <p class="mb-0 fw-bold"><em data-i18n="section.publications.papermoon.title">Luna de Papel</em></p>
+                                    <small data-i18n="section.publications.papermoon.description">El poemario colectivo <em>Luna de Papel</em> (<em>Ediciones Luna de Papel</em>, México, 2020) surge del VII Encuentro <em>"Letras del Nuevo Siglo"</em>, presentando un mosaico de voces contemporáneas donde conviven lo íntimo y lo social. Destacan poemas como <em>Mujer purépecha, mujer de luz</em> de Evelia Flores, y <em>Mestizo</em> de Ikalca Tadeshko. Mi contribución con el poema <em>Ni siquiera sé si fue real</em>, explora el duelo amoroso a través de metáforas de <em>vuelo y caída</em>. La antología crea un territorio donde <em>palabra e imagen</em> se enlazan para celebrar la poesía como acto de <em>resistencia</em> y <em>memoria</em>.</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pestaña de Videos -->
+                <div id="videos" class="tab-pane fade">
+                    <div class="d-flex justify-content-center">
+                        <div class="list-group text-center" style="width: 80%; max-width: 700px;">
+                            <div class="list-group-item">
+                                <h5><em data-i18n="section.publications.video.title">Palestina</em></h5>
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/_uJsGkYIAk0" 
+                                            title="YouTube video player" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN MIS EBOOKS -->
+        <section id="mis-ebooks">
+            <h2 data-i18n="section.ebooks.title">Mis Ebooks</h2>
+            <div class="row">
+                <!-- Pelicana Piadosa -->
+                <div class="col-md-6 mb-4">
+                    <div class="h-100 ebook-card" 
+                    style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                    url('Luna de papel.jpg');">
+                        <div class="p-3">
+                            <h3 class="ebook-title"><em data-i18n="section.ebooks.piouspelican.title">Pelicana Piadosa</em></h3>
+                            <div>
+                                <small data-i18n="section.ebooks.piouspelican.description">Pelicana Piadosa es un grito, una herida abierta y una búsqueda incesante de significado en medio del caos. Su poética oscura y desgarradora, atraviesa experiencias personales y universales, desplegando imágenes de sufrimiento, resistencia, cuestionamiento existencial, redención y renacimiento. Cada poema es un latido feroz, una herida que se abre y cicatriza en la palabra. Este libro no solo se lee, se siente. Es un espejo donde las emociones se desbordan y una invitación a cuestionar y trascender con cada verso.</small>
+                                
+                            </div>
+                            <button type="button" class="btn btn-outline-light w-100 mt-3" data-bs-toggle="modal" data-bs-target="#pagoModalPelicana" data-i18n="section.ebooks.buynow">
+                                Comprar ahora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- MUJER MORENA CLASE MEDIERA POBRE -->
+                <div class="col-md-6 mb-4">
+                    <div class="h-100 ebook-card" 
+                    style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                    url('Luna de papel.jpg');">
+                        <div class="p-3">
+                            <h3 class="ebook-title"><em data-i18n="section.ebooks.brownwoman.title">Mujer Morena Clase <span style="text-decoration: line-through">Mediera</span> Pobre</em></h3>
+                            <div>
+                                <small data-i18n="section.ebooks.brownwoman.description">Esta obra es un testimonio poético crudo y visceral que desentraña las opresiones interseccionales de género, raza y clase desde la voz de una mujer mestiza, pobre y racializada en México. Los primeros tres poemas funcionan como un manifiesto feminista, un grito de rebeldía que abre paso a un viaje profundo: desde la identidad herida y el desgarro amoroso hasta la lucha diaria por la supervivencia y la reconstrucción del ser como un acto de resistencia activa. No es solo poesía, es una herida que se nombra, una reivindicación y un llamado a sentir, recordar y transformar.</small>
+                                <p class="mt-2 mb-0" data-i18n="section.ebooks.comingsoon">¡PROXIMAMENTE!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- Modal de pago para Pelicana Piadosa -->
+<div class="modal fade" id="pagoModalPelicana" tabindex="-1" aria-labelledby="pagoModalPelicanaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); color: white; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.15); font-family: 'Bell MT', serif;">
+            <div class="modal-header border-bottom-0 position-absolute top-0 end-0">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="filter: brightness(0.8);"></button>
+            </div>
+            <div class="modal-body p-0" style="background-image: url(app/statics/nebulosa1.jpg'); background-size: cover; background-position: center; border-radius: 15px;">
+                <div class="container-fluid" style="background: rgba(0, 0, 0, 0.7); border-radius: 15px;">
+                    <div class="row">
+                        <!-- Columna izquierda - Portada y carrusel -->
+                        <div class="col-md-5 p-4 d-flex flex-column">
+                            <!-- Carrusel de imágenes -->
+                            <div id="pelicanaCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+                                <div class="carousel-inner rounded" style="border: 1px solid rgba(255,255,255,0.1);">
+                                    <div class="carousel-item active">
+                                        <img src="assets/images/PELICANA PIADOSA_page-0001.jpg" class="d-block w-100" alt="Portada Pelicana Piadosa" style="max-height: 350px; object-fit: contain; margin: 0 auto;">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="assets/images/PELICANA PIADOSA_page-0002.jpg" class="d-block w-100" alt="Índice Pelicana Piadosa" style="max-height: 350px; object-fit: contain; margin: 0 auto;">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="assets/images/PELICANA PIADOSA_page-0004.jpg" class="d-block w-100" alt="Desgarro" style="max-height: 350px; object-fit: contain; margin: 0 auto;">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="assets/images/PELICANA PIADOSA_page-0005.jpg" class="d-block w-100" alt="Desgarro" style="max-height: 350px; object-fit: contain; margin: 0 auto;">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="assets/images/PELICANA PIADOSA_page-0023.jpg" class="d-block w-100" alt="Epilogo" style="max-height: 350px; object-fit: contain; margin: 0 auto;">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#pelicanaCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden" data-i18n="modal.previous">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#pelicanaCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden" data-i18n="modal.next">Siguiente</span>
+                                </button>
+                                <div class="carousel-indicators position-static mt-2">
+                                    <button type="button" data-bs-target="#pelicanaCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="width: 12px; height: 12px; border-radius: 50%; border: 1px solid white; background-color: transparent;"></button>
+                                    <button type="button" data-bs-target="#pelicanaCarousel" data-bs-slide-to="1" aria-label="Slide 2" style="width: 12px; height: 12px; border-radius: 50%; border: 1px solid white; background-color: transparent;"></button>
+                                    <button type="button" data-bs-target="#pelicanaCarousel" data-bs-slide-to="2" aria-label="Slide 3" style="width: 12px; height: 12px; border-radius: 50%; border: 1px solid white; background-color: transparent;"></button>
+                                    <button type="button" data-bs-target="#pelicanaCarousel" data-bs-slide-to="3" aria-label="Slide 4" style="width: 12px; height: 12px; border-radius: 50%; border: 1px solid white; background-color: transparent;"></button>
+                                    <button type="button" data-bs-target="#pelicanaCarousel" data-bs-slide-to="4" aria-label="Slide 5" style="width: 12px; height: 12px; border-radius: 50%; border: 1px solid white; background-color: transparent;"></button>
+                                </div>
+                                
+                            </div>
+                            
+                            <!-- Título y autor -->
+                            <h2 class="text-center mb-1" style="font-style: italic; text-shadow: 1px 1px 3px rgba(0,0,0,0.7);" data-i18n="modal.piouspelican.title">
+                                PELICANA PIADOSA
+                            </h2>
+                            <p class="text-center mb-3" style="font-style: italic; opacity: 0.8;" data-i18n="modal.piouspelican.subtitle">(Anatomía del desgarro y otros naufragios)</p>
+                        
+                            
+                            <!-- Precio -->
+                            <div class="d-flex justify-content-center align-items-center mb-4">
+                                <h3 class="mb-0" data-i18n="modal.price"></h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Columna derecha - Información de pago -->
+                        <div class="col-md-7 p-4">
+                            <!-- "Sobre este poemario" -->
+                            <div class="mb-4">
+                                <h4 class="mb-3 text-center" style="font-style: italic; text-shadow: 1px 1px 3px rgba(0,0,0,0.7);" data-i18n="modal.about">Sobre este poemario</h4>
+                                <p style="line-height: 1.7; text-align: justify; font-size: 1.05rem;" data-i18n="modal.piouspelican.description">
+                                    Pelicana Piadosa es más que un poemario: es un grito, una herida abierta y una búsqueda incesante de significado en medio del caos. Su voz poética y desgarradora, atraviesa experiencias personales y universales, desplegando imágenes de sufrimiento, resistencia, cuestionamiento existencial, redención y renacimiento. Cada poema es un latido feroz, una herida que se abre y cicatriza en la palabra. Este texto no solo se lee, se siente. Es un espejo donde las emociones se desbordan y una invitación a cuestionar y trascender con cada verso.
+                                </p>
+                            </div>
+                            
+                        
+                            <!-- Métodos de pago - Versión ajustada -->
+<div class="mt-5">
+    <!-- PayPal - Botón directo -->
+    <a href="https://www.paypal.com/paypalme/OleoSobreVida?country.x=MX&locale.x=es_XC" 
+       target="_blank" 
+       class="btn btn-outline-light w-100 py-2 mb-3" 
+       style="border-color: rgba(255,255,255,0.3); font-size: 0.95rem;" 
+       onclick="handlePaymentComplete()">
+        <i class="bi bi-paypal me-2"></i> <span data-i18n="modal.paypal">Pagar con PayPal</span>
+    </a>
+    
+    <!-- Transferencia Bancaria - Desplegable -->
+    <div class="mb-3">
+        <button class="btn btn-outline-light w-100 py-2" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#transferenciaCollapse" 
+                style="border-color: rgba(255,255,255,0.3); font-size: 0.95rem;">
+            <i class="bi bi-bank me-2"></i> <span data-i18n="modal.banktransfer">Transferencia Bancaria</span>
+        </button>
+        <div id="transferenciaCollapse" class="collapse mt-3">
+            <div class="p-3" style="background: rgba(0,0,0,0.3); border-radius: 5px; font-size: 0.9rem;">
+                <p class="mb-2"><strong data-i18n="modal.bank">Banco:</strong> BANCOMER (BBVA)</p>
+                <p class="mb-2"><strong data-i18n="modal.clabe">CLABE:</strong> 012 470 0156 6952 1465</p>
+                <p class="mb-2"><strong data-i18n="modal.card">Tarjeta:</strong> 4152 3143 8815 1139</p>
+                <p class="mb-0"><strong data-i18n="modal.accountname">A nombre de:</strong> Lluvia F. Maldonado</p>
+            </div>
+            <p class="text-center mt-2" style="font-size: 0.85rem;" data-i18n="modal.sendreceipt">Envía tu comprobante para habilitar la descarga</p>
+        </div>
+    </div>
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- SECCIÓN SOBRE MÍ -->
+        <section id="sobre-mi">
+            <h2 data-i18n="section.about.title">Sobre Mí</h2>
+            <p data-i18n="section.about.paragraph1">Empecé a escribir por concepto de pandemia. Sin embargo, guiándome por las intrincadas líneas del pasado, me di cuenta de que ya lo hacía desde la adolescencia, cuando el dolor me sobrepasaba. En aquel entonces, escribía una y mil veces sustanciosos poemas con párrafos enteros de: ¡te odio!</p>
+            <p data-i18n="section.about.paragraph2">O, por el contrario, poemas rebosantes de amor, expresando cuánto me enamoraba algo o a alguien, y lo fácil que era elevarme al cielo con ello.</p>
+            <p data-i18n="section.about.paragraph3">La vida me llevó a desarrollar fuertes pasiones por el medio ambiente y la geografía. Me agrada la cerámica y, por supuesto, vomitar letras sobre el papel.</p>
+            <p data-i18n="section.about.paragraph4">Mis mejores deseos de paz profunda.</p>
+            <p data-i18n="section.about.paragraph5">Lluvia Fernanda Maldonado Sáenz, conocida en el mundo poético como Óleo Sobre Vida.</p>
+        </section>
+
+        <!-- SECCIÓN CAFÉ -->
+        <section id="cafe">
+            <h2 data-i18n="section.coffee.title">Café Virtual</h2>
+            <p class="lead mb-4" data-i18n="section.coffee.intro">Si mis palabras te han conmovido, acompañado o inspirado, puedes apoyar mi trabajo creativo con un café virtual. Cada aporte me ayuda a seguir escribiendo y compartiendo mi poesía con el mundo.</p>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="p-4" style="background: rgba(0,0,0,0.2); border-radius: 8px;">
+                        <h4 class="mb-3"><i class="bi bi-cup-hot-fill me-2"></i><span data-i18n="section.coffee.banktransfer">Transferencia Bancaria</span></h4>
+                        <div class="bg-dark bg-opacity-25 p-3 rounded">
+                            <p class="mb-1"><strong data-i18n="modal.bank">Banco:</strong> BANCOMER (BBVA)</p>
+                            <p class="mb-1"><strong data-i18n="modal.clabe">CLABE:</strong> 012 470 0156 6952 1465</p>
+                            <p class="mb-1"><strong data-i18n="modal.card">Tarjeta:</strong> 4152 3143 8815 1139</p>
+                            <p class="mb-0"><strong data-i18n="modal.accountname">A nombre de:</strong> Lluvia F. Maldonado</p>
+                        </div>
+                        <small class="text-muted d-block mt-2"></small>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="p-4" style="background: rgba(0,0,0,0.2); border-radius: 8px;">
+                        <h4 class="mb-3"><i class="bi bi-coin me-2"></i><span data-i18n="section.coffee.otherplatforms">Otras Plataformas</span></h4>
+                        <a href="https://paypal.me/OleoSobreVida?country.x=MX&locale.x=es_XC" target="_blank" class="btn btn-outline-light w-100 mb-3">
+                            <i class="bi bi-paypal me-2"></i> PayPal
+                        </a>
+                        <a href="https://ko-fi.com/oleosobrevida" target="_blank" class="btn btn-outline-light w-100">
+                            <i class="bi bi-cup-hot me-2"></i> Ko-fi
+                        </a>
+                        <small class="text-white d-block mt-2" data-i18n="section.coffee.thanks">¡Gracias por tu apoyo!</small> 
+                    </div>
+                </div>
+            </div>
+            
+            <p class="mt-4 mb-0 text-center"><small data-i18n="section.coffee.footer">¡Gracias por apoyar la poesía independiente! Cada café se transforma en versos nuevos.</small></p>
+        </section>
+
+        <!-- SECCIÓN CONTACTO -->
+        <section id="contacto">
+            <h2 data-i18n="section.contact.title">Contacto</h2>
+            <p data-i18n="section.contact.subtitle">¿Tienes alguna duda o te gustaría colaborar?</p>
+            <ul class="contact-list">
+                <li class="mb-2"><i class="bi bi-instagram me-2"></i><a href="https://www.instagram.com/oleo_sobre_vida" target="_blank">Instagram</a></li>
+                <li class="mb-2"><i class="bi bi-envelope me-2"></i><a href="mailto:oleosobrevida@gmail.com">oleosobrevida@gmail.com</a></li>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // Textos en ambos idiomas
+        const translations = {
+            'es': {
+                // Títulos y navegación
+                'title': 'Óleo Sobre Vida',
+                'quote': 'Escribo con tinta de mis venas abiertas para que el mundo recuerde que sangrar también es testimonio – Lluvia.F. M.S.',
+                'nav.poems': 'Poemas',
+                'nav.publications': 'Publicaciones',
+                'nav.ebooks': 'Mis Ebooks',
+                'nav.about': 'Sobre mí',
+                'nav.coffee': 'Café',
+                'nav.contact': 'Contacto',
+                
+                // Sección Poemas
+                'section.poems.title': 'Poemas',
+                'section.poems.category1': 'Reflexión Existencial',
+                'section.poems.category2': 'Relaciones humanas y autoconocimiento',
+                'section.poems.category3': 'Crítica Social y Resistencia',
+                
+                // Poema Fantasma
+                'section.poems.fantasma.title': 'Fantasma',
+                'section.poems.fantasma.line1': 'La esencia de mi alma se halla perdida.',
+                'section.poems.fantasma.line2': 'No sé si estoy aquí porque también estoy en todo lugar.',
+                'section.poems.fantasma.line3': 'No es bonito, no es una cualidad, es una cuestión humana.',
+                'section.poems.fantasma.line4': 'Otros todos y su andanza por el mar de las emociones, la intuición.',
+                'section.poems.fantasma.line5': 'Naturaleza extraña, me es ajeno, no comprendo.',
+                'section.poems.fantasma.line6': 'Un frágil y desnudo cuerpo me acompaña en las tempestades',
+                'section.poems.fantasma.line7': 'Familia, raza, amigos, marginados, la elite, la casta;',
+                'section.poems.fantasma.line8': 'la unión de otras mentes para crear un sentido.',
+                'section.poems.fantasma.line9': 'Territorios ideológicos desconocidos que sustentan el porvenir humano,',
+                'section.poems.fantasma.line10': 'Conceptos prefabricados, solo nacer y morir son coordenadas visibles.',
+                'section.poems.fantasma.line11': 'Mi mente me ayuda, mi mente me destruye',
+                'section.poems.fantasma.line12': '¿Qué puedo esperar de mí?',
+                'section.poems.fantasma.line13': 'No sé qué decir',
+                'section.poems.fantasma.line14': '¿Y entonces?',
+                'section.poems.fantasma.line15': 'Quiero estar tranquila, es ahí, en ese deseo,',
+                'section.poems.fantasma.line16': 'donde aparecen como fantasmas la fe y la amargura.',
+                'section.poems.fantasma.line17': '¿Qué va a ser de mí?',
+                'section.poems.fantasma.line18': 'En cualquier momento la muerte tocará mi puerta,',
+                'section.poems.fantasma.line19': 'mi alma grita,',
+                'section.poems.fantasma.line20': 'los cuervos me obligan a estar confinada,',
+                'section.poems.fantasma.line21': 'los quiero encerrar a ellos para nunca acabar.',
+                'section.poems.fantasma.line22': 'Trato de contemplarme, ¿Por qué me escondo?',
+                'section.poems.fantasma.line23': '¡Ya basta!',
+                'section.poems.fantasma.line24': 'El salvajismo emocional me carcome.',
+                'section.poems.fantasma.line25': 'Entender la otredad para estar en armonía.',
+                'section.poems.fantasma.line26': 'Jamás lo sabré todo, tiendo al caos.',
+                'section.poems.fantasma.line27': 'Cual tangente está el dolor,',
+                'section.poems.fantasma.line28': 'qué tan a flor de piel está la desesperanza y la ilusión.',
+                
+                // Poema A mis hijos
+                'section.poems.amishijos.title': 'A mis hijos',
+                'section.poems.amishijos.line1': 'No toda sonrisa es sincera.',
+                'section.poems.amishijos.line2': 'No os preocupéis, lo siniestro también se puede ver,',
+                'section.poems.amishijos.line3': 'las miradas se pueden leer,',
+                'section.poems.amishijos.line4': 'cada poro del cuerpo delata su tormenta.',
+                'section.poems.amishijos.line5': 'Un manjar se puede servir con oscuras intenciones,',
+                'section.poems.amishijos.line6': 'mientras una sopa sencilla puede significar un bocado de bondad.',
+                'section.poems.amishijos.line7': 'No todos respiran tu aire,',
+                'section.poems.amishijos.line8': 'abraza tus rarezas,',
+                'section.poems.amishijos.line9': 'son el lastre que te traen a flote en este mundo.',
+                'section.poems.amishijos.line10': 'Olvida el diccionario de ángeles y demonios,',
+                'section.poems.amishijos.line11': 'solo el alma se puede sentir,',
+                'section.poems.amishijos.line12': 'cuándo la intuición',
+                'section.poems.amishijos.line13': 'grita más fuerte que la razón.',
+                'section.poems.amishijos.line14': 'Cada cosa tiene su punto de equilibrio,',
+                'section.poems.amishijos.line15': 'tu centro',
+                'section.poems.amishijos.line16': 'late donde el reloj',
+                'section.poems.amishijos.line17': 'se olvida de girar.',
+                'section.poems.amishijos.line18': 'Aprende a sentarte',
+                'section.poems.amishijos.line19': 'en el filo del aburrimiento:',
+                'section.poems.amishijos.line20': 'un lado corta venas,',
+                'section.poems.amishijos.line21': 'el otro desata universos.',
+                'section.poems.amishijos.line22': 'Tu sangre elegirá',
+                'section.poems.amishijos.line23': 'Todos son mis hijos, la creación reside en mí.',
+                
+                // Poema Amiga
+                'section.poems.amiga.title': 'Amiga',
+                'section.poems.amiga.line1': 'Mi corazón se estruja cuando coincidimos en risas que se balancean en la ligereza de una pluma',
+                'section.poems.amiga.line2': 'cayendo.',
+                'section.poems.amiga.line3': 'Como hermanas de otra madre, el viento trajo tu nombre',
+                'section.poems.amiga.line4': 'Amor indecible, tiembla mi ser.',
+                'section.poems.amiga.line5': 'Pensar que me adoras como yo a ti, me entusiasma.',
+                'section.poems.amiga.line6': 'Pensar que me alabas como yo a ti, me derrite.',
+                'section.poems.amiga.line7': 'Pensar que me quieres como yo a ti, me cautiva',
+                'section.poems.amiga.line8': 'Nace por el género y termina con la palabra "amiga".',
+                'section.poems.amiga.line9': 'Perfecta danza de espejos',
+                'section.poems.amiga.line10': 'Hasta que el telón se arruinó en mentiras y traición',
+                'section.poems.amiga.line11': 'Se torció el guión',
+                'section.poems.amiga.line12': 'Me apagaste cuando brillaba, me callaste cuando reía.',
+                'section.poems.amiga.line13': 'Señalando mis cicatrices, festejando mis heridas.',
+                'section.poems.amiga.line14': 'La función se volvió tragedia bajo el yugo de la envidia.',
+                'section.poems.amiga.line15': 'A pesar de todo',
+                'section.poems.amiga.line16': 'Te acepto en tus puntos y comas,',
+                'section.poems.amiga.line17': 'en tus paréntesis de llanto,',
+                'section.poems.amiga.line18': 'en tus signos de interrogación...',
+                'section.poems.amiga.line19': 'pero no en este párrafo',
+                'section.poems.amiga.line20': 'donde yo respiro, donde me nombro libre.',
+                'section.poems.amiga.line21': 'Suaves palabras',
+                'section.poems.amiga.line22': 'Mi única, implacable y fiel amiga.',
+                'section.poems.amiga.line23': 'La mejor y peor de todas.',
+                'section.poems.amiga.line24': 'Yo misma',
+                'section.poems.amiga.line25': 'la que sangra cristales',
+                'section.poems.amiga.line26': 'y con los fragmentos se construye un mapa',
+                'section.poems.amiga.line27': 'donde tu nombre es sólo una cicatriz que ya no pica',
+                'section.poems.amiga.line28': 'adiós.',
+             //Poema awaka   
+'section.poems.awaka.title': 'Awaka',
+'section.poems.awaka.line1': 'Algo se descubrió/ fue el folklor de mi calle',
+'section.poems.awaka.line2': 'la cultura de mi gente / el aroma de la comida',
+'section.poems.awaka.line3': 'la angusticidad de los días',
+'section.poems.awaka.line4': 'la manera en la que me visto',
+'section.poems.awaka.line5': 'la manera en la que me sustento',
+'section.poems.awaka.line6': 'mis paisajes culturales/ llegó la mirada del inversor',
+'section.poems.awaka.line7': 'mis abuelos decidieron mudarse',
+'section.poems.awaka.line8': 'la mejor decisión es vender la casa',
+'section.poems.awaka.line9': 'descubrí que nos están desplazando',
+'section.poems.awaka.line10': 'algo se rompió',
+'section.poems.awaka.line11': 'necesito hablar con alguien// salgo no veo a nadie',
+'section.poems.awaka.line12': '¿Quién eres tú? // Ni siquiera hablas mi idioma',
+'section.poems.awaka.line13': 'no entiendes de lo que hablo// y no me refiero a palabras',
+'section.poems.awaka.line14': 'me refiero a lo que sentimos',
+'section.poems.awaka.line15': 'se rompió mi confianza',
+'section.poems.awaka.line16': 'ahora no encajo// no me alcanza',
+'section.poems.awaka.line17': 'solo mira esos ojos// llenos de awaka',
+'section.poems.awaka.line18': 'la ambición desbordada que vieron los indígenas en los colonizadores',
+'section.poems.awaka.line19': 'la misma hambre que trajeron los barcos',
+'section.poems.awaka.line20': 'la misma sombra que devora el tiempo',
+'section.poems.awaka.line21': 'no entiendo',
+'section.poems.awaka.line22': '¿dónde están los pájaros? //¿dónde están los árboles?',
+'section.poems.awaka.line23': '¿dónde están las luciérnagas?// ¿dónde está mi paisaje?',
+'section.poems.awaka.line24': 'se está perdiendo la esencia',
+'section.poems.awaka.line25': 'se está perdiendo el folklor // están borrando la memoria',
+'section.poems.awaka.line26': 'se perdieron mis amigos//se perdió el barrio',
+'section.poems.awaka.line27': 'solo me queda perderme a mí',
+'section.poems.awaka.line28': 'necesito moverme// necesito luchar',
+
+                // Poema Que me Dejo
+                'section.poems.quemedajo.title': 'Que me Dejo',
+                'section.poems.quemedajo.line1': 'No hables, abre las piernas, así está mejor',
+                'section.poems.quemedajo.line2': 'Intentar vivir en silencio',
+                'section.poems.quemedajo.line3': 'Nada de quejas',
+                'section.poems.quemedajo.line4': 'Siéntate y escucha mis desprecios',
+                'section.poems.quemedajo.line5': 'No tienes futuro como nada, como nadie',
+                'section.poems.quemedajo.line6': 'Y que me dejó, me la creí sabiendo que sus palabras son falsas, tanto lo repitieron.',
+                'section.poems.quemedajo.line7': 'Me dejé cuando me acusaron injustamente',
+                'section.poems.quemedajo.line8': 'Cuando te burlaste en mi cara',
+                'section.poems.quemedajo.line9': 'Cuando me golpeaste sin compasión',
+                'section.poems.quemedajo.line10': 'El gozar de la credibilidad social',
+                'section.poems.quemedajo.line11': 'De la blanquitud de tu cara',
+                'section.poems.quemedajo.line12': 'y el apellido europeo de un padre que no te quiso.',
+                'section.poems.quemedajo.line13': 'Me dejé y me enoja seguir haciéndolo',
+                'section.poems.quemedajo.line14': 'Seré rebelde, en realidad siempre lo he sido.',
+                'section.poems.quemedajo.line15': '27 años y entiendo a los del club.',
+                'section.poems.quemedajo.line16': 'A Camille Claudel y a Mileva Maric',
+                'section.poems.quemedajo.line17': 'A mi madre y a mis abuelas',
+                'section.poems.quemedajo.line18': 'que también se dejaron, las obligaron a hacerlo.',
+                'section.poems.quemedajo.line19': 'Soy sublime y no pienso callar más.',
+                'section.poems.quemedajo.line20': 'Ni tus más grandes esfuerzos podrán conmigo jamás',
+                'section.poems.quemedajo.line21': 'Me defenderé y viviré',
+                'section.poems.quemedajo.line22': 'A su pesar, de hombres y mujeres,',
+                'section.poems.quemedajo.line23': 'que no pueden con el brillo del bronce que funde sus cadenas',
+                'section.poems.quemedajo.line24': 'y escribe con el fuego',
+                'section.poems.quemedajo.line25': 'los nombres de las que vendrán.',
+                
+                // Sección Publicaciones
+                'section.publications.title': 'Publicaciones',
+                'section.publications.tab1': 'Poemarios Colectivos',
+                'section.publications.tab2': 'Videos',
+                
+                // Poesía Joven 2024
+                'section.publications.poetry2024.title': 'Poesía Joven 2024',
+                'section.publications.poetry2024.description': 'El poemario colectivo <em>Poesía Joven 2024</em>, es una antología internacional del <em>Movimiento Proyecto Cultural Sur</em>, donde participe con el poema <em>Palestina</em>, un grito contra la guerra y la injusticia. La obra —con imágenes de destrucción y resistencia— culmina con una advertencia: <em>"Hoy es Palestina, mañana los pueblos del mundo"</em>. Esta colección es un testimonio potente de la juventud latinoamericana e hispanohablante, donde <em>arte</em> y <em>activismo</em> se unen. Ideal para quienes buscan poesía contemporánea con <em>conciencia social</em>.',
+                
+                // Poema Algorítmico
+                'section.publications.algorithmic.title': 'Poema Algorítmico',
+                'section.publications.algorithmic.description': 'El <em>Poema Algorítmico</em> (2021, <em>Poesía Volante</em>, México) es una obra experimental que fusiona literatura y tecnología mediante <em>cadenas de Márkov</em>, un método de generación de texto basado en probabilidades. El resultado es un texto <em>surrealista</em> y <em>fragmentado</em>. Mi huella poética en el <em>Poema Algorítmico</em> se revela donde <em>geografías reales e imaginarias</em> se convierten en extensiones del cuerpo y la memoria.',
+                
+                // Luna de Papel
+                'section.publications.papermoon.title': 'Luna de Papel',
+                'section.publications.papermoon.description': 'El poemario colectivo <em>Luna de Papel</em> (<em>Ediciones Luna de Papel</em>, México, 2020) surge del VII Encuentro <em>"Letras del Nuevo Siglo"</em>, presentando un mosaico de voces contemporáneas donde conviven lo íntimo y lo social. Destacan poemas como <em>Mujer purépecha, mujer de luz</em> de Evelia Flores, y <em>Mestizo</em> de Ikalca Tadeshko. Mi contribución con el poema <em>Ni siquiera sé si fue real</em>, explora el duelo amoroso a través de metáforas de <em>vuelo y caída</em>. La antología crea un territorio donde <em>palabra e imagen</em> se enlazan para celebrar la poesía como acto de <em>resistencia</em> y <em>memoria</em>.',
+                
+                // Video Palestina
+                'section.publications.video.title': 'Palestina',
+            
+                // Sección Ebooks - Versión en español
+        'section.ebooks.title': 'Mis Ebooks',
+        'section.ebooks.piouspelican.title': 'Pelicana Piadosa',
+        'section.ebooks.piouspelican.description': 'Pelicana Piadosa es un grito, una herida abierta y una búsqueda incesante de significado en medio del caos. Su poética oscura y desgarradora, atraviesa experiencias personales y universales, desplegando imágenes de sufrimiento, resistencia, cuestionamiento existencial, redención y renacimiento. Cada poema es un latido feroz, una herida que se abre y cicatriza en la palabra. Este libro no solo se lee, se siente. Es un espejo donde las emociones se desbordan y una invitación a cuestionar y trascender con cada verso.',
+        'section.ebooks.brownwoman.title': 'Mujer Morena Clase <span style="text-decoration: line-through">Mediera</span> Pobre',
+        'section.ebooks.brownwoman.description': 'Esta obra es un testimonio poético crudo y visceral que desentraña las opresiones interseccionales de género, raza y clase desde la voz de una mujer mestiza, pobre y racializada en México. Los primeros tres poemas funcionan como un manifiesto feminista, un grito de rebeldía que abre paso a un viaje profundo: desde la identidad herida y el desgarro amoroso hasta la lucha diaria por la supervivencia y la reconstrucción del ser como un acto de resistencia activa. No es solo poesía, es una herida que se nombra, una reivindicación y un llamado a sentir, recordar y transformar.',
+        'section.ebooks.comingsoon': '¡PROXIMAMENTE!',
+        'section.ebooks.buynow': 'Comprar ahora',
+        'modal.price': '$250.00 MXN',
+                
+                // Sección Sobre Mí
+                'section.about.title': 'Sobre Mí',
+                'section.about.paragraph1': 'Empecé a escribir por concepto de pandemia. Sin embargo, guiándome por las intrincadas líneas del pasado, me di cuenta de que ya lo hacía desde la adolescencia, cuando el dolor me sobrepasaba. En aquel entonces, escribía una y mil veces sustanciosos poemas con párrafos enteros de: ¡te odio!',
+                'section.about.paragraph2': 'O, por el contrario, poemas rebosantes de amor, expresando cuánto me enamoraba algo o a alguien, y lo fácil que era elevarme al cielo con ello.',
+                'section.about.paragraph3': 'La vida me llevó a desarrollar fuertes pasiones por el medio ambiente y la geografía. Me agrada la cerámica y, por supuesto, vomitar letras sobre el papel.',
+                'section.about.paragraph4': 'Mis mejores deseos de paz profunda.',
+                'section.about.paragraph5': 'Lluvia Fernanda Maldonado Sáenz, conocida en el mundo poético como Óleo Sobre Vida.',
+                
+                // Sección Café
+                'section.coffee.title': 'Café Virtual',
+                'section.coffee.intro': 'Si mis palabras te han conmovido, acompañado o inspirado, puedes apoyar mi trabajo creativo con un café virtual. Cada aporte me ayuda a seguir escribiendo y compartiendo mi poesía con el mundo.',
+                'section.coffee.banktransfer': 'Transferencia Bancaria',
+                'section.coffee.otherplatforms': 'Otras Plataformas',
+                'section.coffee.thanks': '¡Gracias por tu apoyo!',
+                'section.coffee.footer': '¡Gracias por apoyar la poesía independiente! Cada café se transforma en versos nuevos.',
+                
+                // Sección Contacto
+                'section.contact.title': 'Contacto',
+                'section.contact.subtitle': '¿Tienes alguna duda o te gustaría colaborar?',
+                
+                // Modal
+                'modal.piouspelican.title': 'PELICANA PIADOSA',
+                'modal.piouspelican.subtitle': '(Anatomía del desgarro y otros naufragios)',
+                'modal.author': 'Lluvia Fernanda Maldonado Sáenz',
+                'modal.currency': 'MXN',
+                'modal.about': 'Sobre este poemario',
+                'modal.piouspelican.description': 'Pelicana Piadosa es más que un poemario: es un grito, una herida abierta y una búsqueda incesante de significado en medio del caos. Su voz poética y desgarradora, atraviesa experiencias personales y universales, desplegando imágenes de sufrimiento, resistencia, cuestionamiento existencial, redención y renacimiento. Cada poema es un latido feroz, una herida que se abre y cicatriza en la palabra. Este texto no solo se lee, se siente. Es un espejo donde las emociones se desbordan y una invitación a cuestionar y trascender con cada verso.',
+                'modal.paypal': 'Pagar con PayPal',
+                'modal.banktransfer': 'Transferencia Bancaria',
+                'modal.bank': 'Banco:',
+                'modal.clabe': 'CLABE:',
+                'modal.card': 'Tarjeta:',
+                'modal.accountname': 'A nombre de:',
+                'modal.sendreceipt': 'Envía tu comprobante para habilitar la descarga',
+                'modal.previous': 'Anterior',
+                'modal.next': 'Siguiente'
+            },
+            'en': {
+                // Títulos y navegación
+                'title': 'Oil About Life',
+                'quote': 'I write with ink from my open veins so the world remembers that bleeding is also testimony – Lluvia.F. M.S.',
+                'nav.poems': 'Poems',
+                'nav.publications': 'Publications',
+                'nav.ebooks': 'My Ebooks',
+                'nav.about': 'About me',
+                'nav.coffee': 'Coffee',
+                'nav.contact': 'Contact',
+                
+                // Sección Poemas
+                'section.poems.title': 'Poems',
+                'section.poems.category1': 'Existential Reflection',
+                'section.poems.category2': 'Human Relationships and Self-Knowledge',
+                'section.poems.category3': 'Social Criticism and Resistance',
+                
+                // Poema Fantasma
+                'section.poems.fantasma.title': 'Ghost',
+                'section.poems.fantasma.line1': 'The essence of my soul is lost.',
+                'section.poems.fantasma.line2': 'I don\'t know if I\'m here because I\'m also everywhere.',
+                'section.poems.fantasma.line3': 'It\'s not beautiful, it\'s not a quality, it\'s a human matter.',
+                'section.poems.fantasma.line4': 'Others and their journey through the sea of emotions, intuition.',
+                'section.poems.fantasma.line5': 'Strange nature, alien to me, I don\'t understand.',
+                'section.poems.fantasma.line6': 'A fragile and naked body accompanies me in the tempests',
+                'section.poems.fantasma.line7': 'Family, race, friends, marginalized, the elite, the caste;',
+                'section.poems.fantasma.line8': 'the union of other minds to create meaning.',
+                'section.poems.fantasma.line9': 'Unknown ideological territories that sustain human future,',
+                'section.poems.fantasma.line10': 'Prefabricated concepts, only birth and death are visible coordinates.',
+                'section.poems.fantasma.line11': 'My mind helps me, my mind destroys me',
+                'section.poems.fantasma.line12': 'What can I expect from myself?',
+                'section.poems.fantasma.line13': 'I don\'t know what to say',
+                'section.poems.fantasma.line14': 'So what?',
+                'section.poems.fantasma.line15': 'I want to be at peace, it\'s there, in that desire,',
+                'section.poems.fantasma.line16': 'where faith and bitterness appear like ghosts.',
+                'section.poems.fantasma.line17': 'What will become of me?',
+                'section.poems.fantasma.line18': 'At any moment death will knock at my door,',
+                'section.poems.fantasma.line19': 'my soul screams,',
+                'section.poems.fantasma.line20': 'the ravens force me to be confined,',
+                'section.poems.fantasma.line21': 'I want to lock them up to never end.',
+                'section.poems.fantasma.line22': 'I try to contemplate myself, Why do I hide?',
+                'section.poems.fantasma.line23': 'Enough!',
+                'section.poems.fantasma.line24': 'Emotional savagery eats away at me.',
+                'section.poems.fantasma.line25': 'Understanding otherness to be in harmony.',
+                'section.poems.fantasma.line26': 'I\'ll never know everything, I tend to chaos.',
+                'section.poems.fantasma.line27': 'Like a tangent is the pain,',
+                'section.poems.fantasma.line28': 'how close to the surface are despair and illusion.',
+                
+                // Poema A mis hijos
+                'section.poems.amishijos.title': 'To My Children',
+                'section.poems.amishijos.line1': 'Not every smile is sincere.',
+                'section.poems.amishijos.line2': 'Don\'t worry, the sinister can also be seen,',
+                'section.poems.amishijos.line3': 'gazes can be read,',
+                'section.poems.amishijos.line4': 'every pore of the body betrays its storm.',
+                'section.poems.amishijos.line5': 'A delicacy can be served with dark intentions,',
+                'section.poems.amishijos.line6': 'while a simple soup can mean a bite of kindness.',
+                'section.poems.amishijos.line7': 'Not everyone breathes your air,',
+                'section.poems.amishijos.line8': 'embrace your quirks,',
+                'section.poems.amishijos.line9': 'they are the ballast that keeps you afloat in this world.',
+                'section.poems.amishijos.line10': 'Forget the dictionary of angels and demons,',
+                'section.poems.amishijos.line11': 'only the soul can be felt,',
+                'section.poems.amishijos.line12': 'when intuition',
+                'section.poems.amishijos.line13': 'shouts louder than reason.',
+                'section.poems.amishijos.line14': 'Everything has its balance point,',
+                'section.poems.amishijos.line15': 'your center',
+                'section.poems.amishijos.line16': 'beats where the clock',
+                'section.poems.amishijos.line17': 'forgets to turn.',
+                'section.poems.amishijos.line18': 'Learn to sit',
+                'section.poems.amishijos.line19': 'on the edge of boredom:',
+                'section.poems.amishijos.line20': 'one side cuts veins,',
+                'section.poems.amishijos.line21': 'the other unleashes universes.',
+                'section.poems.amishijos.line22': 'Your blood will choose',
+                'section.poems.amishijos.line23': 'All are my children, creation resides in me.',
+                
+                // Poema Amiga
+                'section.poems.amiga.title': 'Friend',
+                'section.poems.amiga.line1': 'My heart squeezes when we coincide in laughter that balances on the lightness of a feather',
+                'section.poems.amiga.line2': 'falling.',
+                'section.poems.amiga.line3': 'Like sisters from another mother, the wind brought your name',
+                'section.poems.amiga.line4': 'Unspeakable love, my being trembles.',
+                'section.poems.amiga.line5': 'Thinking that you adore me as I adore you, excites me.',
+                'section.poems.amiga.line6': 'Thinking that you praise me as I praise you, melts me.',
+                'section.poems.amiga.line7': 'Thinking that you love me as I love you, captivates me',
+                'section.poems.amiga.line8': 'Born from gender and ends with the word "friend".',
+                'section.poems.amiga.line9': 'Perfect dance of mirrors',
+                'section.poems.amiga.line10': 'Until the curtain was ruined in lies and betrayal',
+                'section.poems.amiga.line11': 'The script twisted',
+                'section.poems.amiga.line12': 'You turned me off when I was shining, you silenced me when I was laughing.',
+                'section.poems.amiga.line13': 'Pointing at my scars, celebrating my wounds.',
+                'section.poems.amiga.line14': 'The show became tragedy under the yoke of envy.',
+                'section.poems.amiga.line15': 'Despite everything',
+                'section.poems.amiga.line16': 'I accept you in your dots and commas,',
+                'section.poems.amiga.line17': 'in your parentheses of tears,',
+                'section.poems.amiga.line18': 'in your question marks...',
+                'section.poems.amiga.line19': 'but not in this paragraph',
+                'section.poems.amiga.line20': 'where I breathe, where I name myself free.',
+                'section.poems.amiga.line21': 'Soft words',
+                'section.poems.amiga.line22': 'My only, relentless and faithful friend.',
+                'section.poems.amiga.line23': 'The best and worst of all.',
+                'section.poems.amiga.line24': 'Myself',
+                'section.poems.amiga.line25': 'the one who bleeds crystals',
+                'section.poems.amiga.line26': 'and with the fragments builds a map',
+                'section.poems.amiga.line27': 'where your name is just a scar that no longer itches',
+                'section.poems.amiga.line28': 'goodbye.',
+
+                // Poema Awaka
+'section.poems.awaka.title': 'Awaka',
+'section.poems.awaka.line1': 'Something was uncovered/ it was the folklore of my street',
+'section.poems.awaka.line2': 'my people\'s culture / the aroma of food',
+'section.poems.awaka.line3': 'the weight of the days',
+'section.poems.awaka.line4': 'the way I dress',
+'section.poems.awaka.line5': 'the way I sustain myself',
+'section.poems.awaka.line6': 'my cultural landscapes / the investor\'s gaze arrived',
+'section.poems.awaka.line7': 'my grandparents decided to move',
+'section.poems.awaka.line8': 'the best decision is to sell the house',
+'section.poems.awaka.line9': 'I realized they\'re displacing us',
+'section.poems.awaka.line10': 'something broke',
+'section.poems.awaka.line11': 'I need to talk to someone// I step outside, see no one',
+'section.poems.awaka.line12': 'Who are you? // You don\'t even speak my language',
+'section.poems.awaka.line13': 'you don\'t understand what I\'m saying// and I don\'t mean words',
+'section.poems.awaka.line14': 'I mean what we feel',
+'section.poems.awaka.line15': 'my trust shattered',
+'section.poems.awaka.line16': 'now I don\'t fit// I can\'t keep up',
+'section.poems.awaka.line17': 'just look at those eyes// full of awaka',
+'section.poems.awaka.line18': 'the boundless ambition the natives saw in the colonizers',
+'section.poems.awaka.line19': 'the same hunger the ships brought',
+'section.poems.awaka.line20': 'the same shadow devouring time',
+'section.poems.awaka.line21': 'I don\'t understand',
+'section.poems.awaka.line22': 'where are the birds? // where are the trees?',
+'section.poems.awaka.line23': 'where are the fireflies?// where is my landscape?',
+'section.poems.awaka.line24': 'the essence is fading',
+'section.poems.awaka.line25': 'the folklore is fading // they\'re erasing memory',
+'section.poems.awaka.line26': 'my friends disappeared// the neighborhood disappeared',
+'section.poems.awaka.line27': 'all that\'s left is to lose myself',
+'section.poems.awaka.line28': 'I need to move// I need to fight',
+                
+                // Poema Que me Dejo
+                'section.poems.quemedajo.title': 'What I Let Myself',
+                'section.poems.quemedajo.line1': 'Don\'t talk, open your legs, that\'s better',
+                'section.poems.quemedajo.line2': 'Trying to live in silence',
+                'section.poems.quemedajo.line3': 'No complaints',
+                'section.poems.quemedajo.line4': 'Sit down and listen to my contempt',
+                'section.poems.quemedajo.line5': 'You have no future as nothing, as no one',
+                'section.poems.quemedajo.line6': 'And what I let myself, I believed it knowing their words were false, they repeated it so much.',
+                'section.poems.quemedajo.line7': 'I let myself when they accused me unfairly',
+                'section.poems.quemedajo.line8': 'When you mocked me to my face',
+                'section.poems.quemedajo.line9': 'When you hit me without compassion',
+                'section.poems.quemedajo.line10': 'Enjoying social credibility',
+                'section.poems.quemedajo.line11': 'Of the whiteness of your face',
+                'section.poems.quemedajo.line12': 'and the European surname of a father who didn\'t want you.',
+                'section.poems.quemedajo.line13': 'I let myself and it angers me to keep doing it',
+                'section.poems.quemedajo.line14': 'I\'ll be rebellious, in truth I always have been.',
+                'section.poems.quemedajo.line15': '27 years and I understand those in the club.',
+                'section.poems.quemedajo.line16': 'Camille Claudel and Mileva Maric',
+                'section.poems.quemedajo.line17': 'My mother and my grandmothers',
+                'section.poems.quemedajo.line18': 'who also let themselves, they were forced to.',
+                'section.poems.quemedajo.line19': 'I am sublime and I won\'t be silent anymore.',
+                'section.poems.quemedajo.line20': 'Not even your greatest efforts will ever defeat me',
+                'section.poems.quemedajo.line21': 'I will defend myself and live',
+                'section.poems.quemedajo.line22': 'To their dismay, of men and women,',
+                'section.poems.quemedajo.line23': 'who can\'t handle the bronze shine that melts their chains',
+                'section.poems.quemedajo.line24': 'and writes with fire',
+                'section.poems.quemedajo.line25': 'the names of those who will come.',
+                
+                // Sección Publicaciones
+                'section.publications.title': 'Publications',
+                'section.publications.tab1': 'Collective Poetry Books',
+                'section.publications.tab2': 'Videos',
+                
+                // Poesía Joven 2024
+                'section.publications.poetry2024.title': 'Young Poetry 2024',
+                'section.publications.poetry2024.description': 'The collective poetry book <em>Young Poetry 2024</em> is an international anthology by the <em>Proyecto Cultural Sur Movement</em>, where I participated with the poem <em>Palestine</em>, a cry against war and injustice. The work —with images of destruction and resistance— culminates with a warning: <em>"Today is Palestine, tomorrow the peoples of the world"</em>. This collection is a powerful testimony of Latin American and Spanish-speaking youth, where <em>art</em> and <em>activism</em> unite. Ideal for those seeking contemporary poetry with <em>social consciousness</em>.',
+                
+                // Poema Algorítmico
+                'section.publications.algorithmic.title': 'Algorithmic Poem',
+                'section.publications.algorithmic.description': 'The <em>Algorithmic Poem</em> (2021, <em>Flying Poetry</em>, Mexico) is an experimental work that merges literature and technology through <em>Markov chains</em>, a text generation method based on probabilities. The result is a <em>surreal</em> and <em>fragmented</em> text. My poetic fingerprint in the <em>Algorithmic Poem</em> is revealed where <em>real and imaginary geographies</em> become extensions of the body and memory.',
+                
+                // Luna de Papel
+                'section.publications.papermoon.title': 'Paper Moon',
+                'section.publications.papermoon.description': 'The collective poetry book <em>Paper Moon</em> (<em>Ediciones Luna de Papel</em>, Mexico, 2020) emerges from the VII Meeting <em>"Letters of the New Century"</em>, presenting a mosaic of contemporary voices where the intimate and the social coexist. Poems like <em>Purépecha Woman, Woman of Light</em> by Evelia Flores, and <em>Mestizo</em> by Ikalca Tadeshko stand out. My contribution with the poem <em>I Don\'t Even Know If It Was Real</em> explores love grief through metaphors of <em>flight and fall</em>. The anthology creates a territory where <em>word and image</em> intertwine to celebrate poetry as an act of <em>resistance</em> and <em>memory</em>.',
+                
+                // Video Palestina
+                'section.publications.video.title': 'Palestine',
+                
+                // Sección Ebooks
+                'section.ebooks.title': 'My Ebooks',
+                'section.ebooks.piouspelican.title': 'Pious Pelican',
+                'section.ebooks.piouspelican.description': 'Pious Pelican is a cry, an open wound and an incessant search for meaning amidst chaos. Its dark and heartbreaking poetics traverses personal and universal experiences, unfolding images of suffering, resistance, existential questioning, redemption and rebirth. Each poem is a fierce heartbeat, a wound that opens and heals in the word. This book is not only read, it is felt. It is a mirror where emotions overflow and an invitation to question and transcend with each verse.',
+                'section.ebooks.brownwoman.title': 'Brown Woman Middle <span style="text-decoration: line-through">Class</span> Poor',
+                'section.ebooks.brownwoman.description': 'This work is a raw and visceral poetic testimony that unravels the intersectional oppressions of gender, race and class from the voice of a mestiza, poor and racialized woman in Mexico. The first three poems function as a feminist manifesto, a cry of rebellion that opens the way to a deep journey: from wounded identity and love tearing to the daily struggle for survival and the reconstruction of the self as an act of active resistance. It\'s not just poetry, it\'s a wound that names itself, a vindication and a call to feel, remember and transform.',
+                'section.ebooks.comingsoon': 'COMING SOON!',
+                'section.ebooks.buynow': 'Buy now',
+                'modal.price': '$10.00 USD',
+                
+                // Sección Sobre Mí
+                'section.about.title': 'About Me',
+                'section.about.paragraph1': 'I started writing because of the pandemic concept. However, guided by the intricate lines of the past, I realized that I had already been doing it since adolescence, when the pain overwhelmed me. Back then, I wrote juicy poems over and over with whole paragraphs of: I hate you!',
+                'section.about.paragraph2': 'Or, on the contrary, poems overflowing with love, expressing how much I fell in love with something or someone, and how easy it was to elevate myself to heaven with it.',
+                'section.about.paragraph3': 'Life led me to develop strong passions for the environment and geography. I like ceramics and, of course, vomiting letters on paper.',
+                'section.about.paragraph4': 'My best wishes for deep peace.',
+                'section.about.paragraph5': 'Lluvia Fernanda Maldonado Sáenz, known in the poetic world as Oil About Life.',
+                
+                // Sección Café
+                'section.coffee.title': 'Virtual Coffee',
+                'section.coffee.intro': 'If my words have moved, accompanied or inspired you, you can support my creative work with a virtual coffee. Each contribution helps me to keep writing and sharing my poetry with the world.',
+                'section.coffee.banktransfer': 'Bank Transfer',
+                'section.coffee.otherplatforms': 'Other Platforms',
+                'section.coffee.thanks': 'Thanks for your support!',
+                'section.coffee.footer': 'Thanks for supporting independent poetry! Every coffee turns into new verses.',
+                
+                // Sección Contacto
+                'section.contact.title': 'Contact',
+                'section.contact.subtitle': 'Do you have any questions or would you like to collaborate?',
+                
+                // Modal
+                'modal.piouspelican.title': 'PIOUS PELICAN',
+                'modal.piouspelican.subtitle': '(Anatomy of the tear and other shipwrecks)',
+                'modal.author': 'Lluvia Fernanda Maldonado Sáenz',
+                'modal.currency': 'USD',
+                'modal.about': 'About this poetry book',
+                'modal.piouspelican.description': 'Pious Pelican is more than a poetry book: it is a cry, an open wound and an incessant search for meaning in the midst of chaos. Its poetic and heartbreaking voice traverses personal and universal experiences, unfolding images of suffering, resistance, existential questioning, redemption and rebirth. Each poem is a fierce heartbeat, a wound that opens and heals in the word. This text is not only read, it is felt. It is a mirror where emotions overflow and an invitation to question and transcend with each verse.',
+                'modal.paypal': 'Pay with PayPal',
+                'modal.banktransfer': 'Bank Transfer',
+                'modal.bank': 'Bank:',
+                'modal.clabe': 'CLABE:',
+                'modal.card': 'Card:',
+                'modal.accountname': 'Account name:',
+                'modal.sendreceipt': 'Send your receipt to enable download',
+                'modal.previous': 'Previous',
+                'modal.next': 'Next'
+            }
+        };
+
+        // Función para cambiar el idioma
+        
+        function changeLanguage(lang) {
+            // Guardar preferencia en localStorage
+            localStorage.setItem('language', lang);
+            
+            // Actualizar todos los elementos con data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    // Para elementos que no son inputs/textarea, actualizar textContent
+                    if (element.tagName !== 'INPUT' && element.tagName !== 'TEXTAREA') {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        // Para inputs y textareas, actualizar value
+                        element.value = translations[lang][key];
+                    }
+                }
+            });
+
+            // Actualizar texto del botón
+            document.getElementById('languageToggle').textContent = 
+                lang === 'es' ? 'SPA/ENG' : 'ENG/SPA';
+            
+            // Actualizar el atributo lang del html
+            document.documentElement.lang = lang;
+        }
+
+        // Configurar el botón de cambio de idioma
+        document.getElementById('languageToggle').addEventListener('click', function() {
+            const currentLang = localStorage.getItem('language') || 'es';
+            const newLang = currentLang === 'es' ? 'en' : 'es';
+            changeLanguage(newLang);
+        });
+
+        // Cargar el idioma guardado al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('language') || 'es';
+            changeLanguage(savedLang);
+        });
+
+        function togglePoem(id) {
+            // Oculta todos los poemas primero
+            document.querySelectorAll('.poema-contenido').forEach(function(el) {
+                if (el.id !== id) {
+                    el.style.display = 'none';
+                }
+            });
+            
+            // Muestra/oculta el poema seleccionado
+            var poem = document.getElementById(id);
+            poem.style.display = (poem.style.display === 'none') ? 'block' : 'none';
+            
+            // Desplaza suavemente a la posición del poema
+            if (poem.style.display === 'block') {
+                poem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            
+            return false;
+        }
+</script>
+</body>
+</html> 

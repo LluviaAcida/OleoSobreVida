@@ -834,24 +834,21 @@
                         
                             <!-- Métodos de pago - Versión ajustada -->
 <div class="mt-5">
-    <!-- PayPal - Botón directo -->
-    <a href="https://www.paypal.com/paypalme/OleoSobreVida?country.x=MX&locale.x=es_XC" 
-       target="_blank" 
-       class="btn btn-outline-light w-100 py-2 mb-3" 
-       style="border-color: rgba(255,255,255,0.3); font-size: 0.95rem;" 
-       onclick="handlePaymentComplete()">
-        <i class="bi bi-paypal me-2"></i> <span data-i18n="modal.paypal">Pagar con PayPal</span>
-    </a>
+  <!-- Hotmart - Botón de compra -->
+<a id="hotmartButton"
+data-link-es="https://pay.hotmart.com/U99341558Q"
+     data-link-en="https://pay.hotmart.com/Q99514887C"
+target="_blank" 
+class="btn btn-outline-light w-100 py-2 mb-3" 
+style="border-color: rgba(255,255,255,0.3); font-size: 0.95rem;" 
+onclick="handlePaymentComplete()">
+ <i class="bi bi-fire me-2"></i> 
+ <span data-i18n="modal.hotmart">Comprar con Hotmart</span>
+</a>
     
     <!-- Transferencia Bancaria - Desplegable -->
     <div class="mb-3">
-        <button class="btn btn-outline-light w-100 py-2" 
-                type="button" 
-                data-bs-toggle="collapse" 
-                data-bs-target="#transferenciaCollapse" 
-                style="border-color: rgba(255,255,255,0.3); font-size: 0.95rem;">
-            <i class="bi bi-bank me-2"></i> <span data-i18n="modal.banktransfer">Transferencia Bancaria</span>
-        </button>
+       
         <div id="transferenciaCollapse" class="collapse mt-3">
             <div class="p-3" style="background: rgba(0,0,0,0.3); border-radius: 5px; font-size: 0.9rem;">
                 <p class="mb-2"><strong data-i18n="modal.bank">Banco:</strong> BANCOMER (BBVA)</p>
@@ -1149,7 +1146,7 @@
                 'modal.currency': 'MXN',
                 'modal.about': 'Sobre este poemario',
                 'modal.piouspelican.description': 'Pelicana Piadosa es más que un poemario: es un grito, una herida abierta y una búsqueda incesante de significado en medio del caos. Su voz poética y desgarradora, atraviesa experiencias personales y universales, desplegando imágenes de sufrimiento, resistencia, cuestionamiento existencial, redención y renacimiento. Cada poema es un latido feroz, una herida que se abre y cicatriza en la palabra. Este texto no solo se lee, se siente. Es un espejo donde las emociones se desbordan y una invitación a cuestionar y trascender con cada verso.',
-                'modal.paypal': 'Pagar con PayPal',
+                'modal.hotmart': 'Comprar con Hotmart',
                 'modal.banktransfer': 'Transferencia Bancaria',
                 'modal.bank': 'Banco:',
                 'modal.clabe': 'CLABE:',
@@ -1380,7 +1377,7 @@
                 'modal.currency': 'USD',
                 'modal.about': 'About this poetry book',
                 'modal.piouspelican.description': 'Pious Pelican is more than a poetry book: it is a cry, an open wound and an incessant search for meaning in the midst of chaos. Its poetic and heartbreaking voice traverses personal and universal experiences, unfolding images of suffering, resistance, existential questioning, redemption and rebirth. Each poem is a fierce heartbeat, a wound that opens and heals in the word. This text is not only read, it is felt. It is a mirror where emotions overflow and an invitation to question and transcend with each verse.',
-                'modal.paypal': 'Pay with PayPal',
+              'modal.hotmart': 'Buy with Hotmart',
                 'modal.banktransfer': 'Bank Transfer',
                 'modal.bank': 'Bank:',
                 'modal.clabe': 'CLABE:',
@@ -1397,6 +1394,15 @@
         function changeLanguage(lang) {
             // Guardar preferencia en localStorage
             localStorage.setItem('language', lang);
+
+                    // Cambiar enlace de Hotmart según el idioma
+const hotmartButton = document.getElementById('hotmartButton');
+if (hotmartButton) {
+    const link = hotmartButton.getAttribute(`data-link-${lang}`);
+    if (link) {
+        hotmartButton.setAttribute('href', link);
+    }
+}
             
             // Actualizar todos los elementos con data-i18n
             document.querySelectorAll('[data-i18n]').forEach(element => {
@@ -1451,6 +1457,7 @@
             }
             
             return false;
+
         }
 </script>
 </body>
